@@ -1,0 +1,34 @@
+
+#background {
+	margin-top: 50px;
+	}
+
+#container {
+	background-color: #FFF5EE;
+	margin-top: 80px;
+	padding: 70px 70px;
+	border-radius: 15px;
+	max-width: 768px;
+  	min-width: 270px;
+}
+body {
+	background: #FA8072;
+	font-family: 'Roboto', sans-serif;
+}
+.footer-text {
+  	font-size: 1em;
+  	margin: 10px;
+}
+
+.footer-logos i {
+ 	border: 1px solid #646464;
+ 	border: 1px solid rgba(100, 100, 100, .3);
+ 	border-radius: 25%;
+ 	color: #646464;
+ 	font-size: 1.1em;
+  	padding: .4em;
+}
+
+.footer-logos i:hover {
+  color: #eee;
+}

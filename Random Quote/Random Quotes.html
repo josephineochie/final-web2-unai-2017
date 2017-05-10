@@ -1,20 +1,62 @@
+<!DOCTYPE html>
 <html>
+	<head>
+		<title>
+			Random Quotes
+		</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
    <body>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="jquery.js">
-	 <div class="w3-">
-	 <div class="w3-leftbar w3-rightbar w3-yellow w3-center">
-	 <div class="w3-container w3-content">
- 	  <p class="w3-opacity w3-center"><b>Quotes For You Today</b></p> 
- 	 <div class="w3-panel w3-light-grey w3-card-2 w3-display-container w3-animate-fading">
-    	  <span class="w3-display-topright w3-padding w3-hover-red">Close</span>
-   	  <p class="w3-text-blue"><b>Love Quote</b></p>
-   	  <p class="w3-animate-top">"Love is sacrifice"</p>
-   	  <p class="w3-text-blue">- Josephine -</p>
-	  <p><button class="w3-button w3-teal">New Quote!</button></p>
- 	</div>
-	</div>
-   </body>
+   	<script src="jquery-3.2.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#btn").click(function(event) {
+				$.ajax( {
+      				url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+      				datatype: 'jsonp',
+      				success: function(data) {
+        				var post = data.shift(); 
+        				$('#name').text(post.title);
+        				$('#quote').html(post.content);
+        				$("#twitter").attr('href','https://twitter.com/intent/tweet?hashtags=quotestoday&related=freecodecamp&text=' + encodeURIComponent('"' + post.content + '"' + '~' + post.title));
+      					},
+      				cache: false
+    			})
+			});
+			$("#close").click(function() {
+				$('#name').text("");
+        		$('#quote').html("");
+			}); 
+			
+		});
+	</script>
+		<div id="background"><center>
+		<div class="w3-container w3-content" id="content">
+			<p></p>
+ 	 		<p class="w3-opacity w3-center"><h1><b>Quotes For You Today</b></h1></p> 
+ 		<div class="w3-panel w3-card-2 w3-display-container" id="container">
+ 			<span class="w3-display-topright w3-padding w3-hover-red" id="close">Hide Quote</span>
+ 			<p><h3><b>Random Quotes</b></h3></p>
+   	  		<p class="w3-animate-top" id="quote"></p>
+   	  		<p class="w3-text-blue" id="name"></p>
+	  		<p><button class="w3-button" id="btn">Generate the Quote</button><a class="tooltipped col s3" data-tooltip="Tweet this quote!" id="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></p>
+ 		</div>
+ 		<p>Contact Me : <b>Josephine Naibaho</b></p>
+ 		<div class="footer-logos"><center>
+      		<a href="https://twitter.com/josephineenaa" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter"></i></a>
+   		  	<a href="https://github.com/josephineochie" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+   			<a href="http://freecodecamp.com/josephineochie" target="_blank" rel="noopener noreferrer"><i class="fa fa-fire"></i></a>
+    		<a href="http://codepen.io/josephineochie/pens/public" target="_blank" rel="noopener noreferrer"><i class="fa fa-codepen"></i></a>
+    		<a href="https://facebook.com/josephine.naibaho" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a>
+    	</div></center>
+		</div></center>
+  </div>
+</footer>
+		</div>
+   	</body>
 </html>
